@@ -7,5 +7,5 @@ capture signals and log signals received
 usage:
 
 ```bash
-make signal-indicator 1 2
+gcc signal/indicator.c && ./a.out signum [signum]
 ```
