@@ -9,6 +9,7 @@
 static void
 handler(int sig) {
     printf("%d caught %d\n", getpid(), sig); // async signal insecure
+    fflush(stdout);
     int orig_errno = errno;
 
     struct sigaction sa;
@@ -36,6 +37,7 @@ handler(int sig) {
         exit(-1);
 
     printf("exiting sig handler\n");
+    fflush(stdout);
     errno = orig_errno;
 }
 
@@ -55,6 +57,7 @@ main(int argc, char *argv[]) {
 
     for (;;) {
         printf("%d waiting\n", getpid());
+        fflush(stdout);
         pause();
     }
 }
